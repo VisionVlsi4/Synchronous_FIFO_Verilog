@@ -21,8 +21,34 @@
                          |          +--------+--------+          |
                          |          |                 |          |
                          |      Full Logic      Empty Logic      |
-                         |                                      |
-      dout[7:0] <------- |                                      |
-      full <------------ |                                      |
-      empty <----------- |                                      |
+                         |                                       |
+      dout[7:0] <------- |                                       |
+      full <------------ |                                       |
+      empty <----------- |                                       |
                          +--------------------------------------+
+
+Internal Architecture Diagram
+
+
+                    +--------------------------+
+                    |      FIFO Memory         |
+                    |--------------------------|
+ Address 0          |                          |
+ Address 1          |                          |
+ Address 2          |                          |
+ Address 3          |                          |
+      .             |                          |
+      .             |                          |
+ Address 15         |                          |
+                    +--------------------------+
+                         ▲              ▲
+                         |              |
+                  Write Pointer    Read Pointer
+                         |              |
+                         +------+-------+
+                                |
+                           Count Register
+                                |
+                     +----------+----------+
+                     |                     |
+                  Full Flag           Empty Flag
